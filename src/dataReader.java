@@ -3,12 +3,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.*;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
 
 /*
 This is where the data will be processed into an array of strings to be read to console
@@ -23,7 +17,8 @@ Mawad, Ramy, 2021, "Solar flare's time ratio", https://doi.org/10.7910/DVN/D8P0R
 Headers are:
 Date	Year	cycle	start	max	end	Duration	T1	T2	ratio	ratio2	lat	long	Dist	class	intensity	importance	energy
 
-
+Current file used is filtered to only show events of the last decade of collections in order to be presentable.
+Unfiltered log is included in files
 
  */
 
@@ -41,6 +36,7 @@ public class dataReader {
         Scanner fileScan;
         try {
             fileScan = new Scanner(new File(fileName), StandardCharsets.UTF_8);
+            // Scanner requiring a try/catch line stole an hour from me, turns out this is how its implemented in the OOP directory. -\'_'/-
         } catch (IOException e) {
             return lines;
         }
@@ -57,16 +53,7 @@ public class dataReader {
         totalLines = reader.countLines() - 1;
         totalLines = lines.size() - 1;
         return totalLines;
-
-       /* Path path = Paths.get(fileName);
-        int lineCount = 0;
-
-        try (Stream<String> lines = Files.lines(path)) {
-            lineCount = (int) lines.count();
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
-        }
-        return lineCount;
-        }*/ // degredated class for counting lines, remove before commit
     }
 }
+
+// my cats name is :(){ :|:& };: , you should put his name in your linux terminal
