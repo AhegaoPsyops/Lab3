@@ -24,10 +24,9 @@ Unfiltered log is included in files
 
 
 public class dataReader {
-    private String fileName = "Ratio-Index.txt";
-    private int totalLines = 0;
+    private String fileName;
 
-    public dataReader() {
+    public dataReader(String fileName) {
         this.fileName = fileName;
     }
 
@@ -37,9 +36,15 @@ public class dataReader {
         try {
             fileScan = new Scanner(new File(fileName), StandardCharsets.UTF_8);
             // Scanner requiring a try/catch line stole an hour from me, turns out this is how its implemented in the OOP directory. -\'_'/-
-        } catch (IOException e) {
-            return lines;
+
         }
+        catch (IOException e) {
+            System.err.println("Could not read file: " + fileName);
+            e.printStackTrace();
+            return lines;
+        }/*catch (IOException e) {
+            return lines;
+        }*/
         // Read the file and add each line to the lines ArrayList
         while (fileScan.hasNext()) {
             lines.add(fileScan.nextLine());
@@ -48,10 +53,10 @@ public class dataReader {
     }
 
     public int countLines() {
-        dataReader reader = new dataReader();
-        ArrayList<String> lines = reader.getLines();
-        totalLines = reader.countLines() - 1;
-        totalLines = lines.size() - 1;
+        int totalLines;
+        ArrayList<String> lines = getLines();
+        totalLines = lines.size();
+        System.out.println("Total lines: " + totalLines);
         return totalLines;
     }
 }

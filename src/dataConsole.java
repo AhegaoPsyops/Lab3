@@ -3,16 +3,21 @@ import java.util.*;
 
 public class dataConsole {
     public static void main(String[] args) {
-        dataReader reader = new dataReader();
+        String data = "Ratio-Index.txt";
+        dataReader reader = new dataReader(data);
         ArrayList<String> lines = reader.getLines();
+        // file read debug line
+        //System.out.println("Working Directory = " + System.getProperty("user.dir"));
+
 
         // Headers
         System.out.println("Extracted Data:");
         System.out.println("Date\tYear\tDuration\tClass\tIntensity");
 
-        // Process console requirements of Lab
+        // need to test if number of lines is being processed correctly
         int totalLines = lines.size();
-        int[] targetLines = {1, 10};
+        reader.countLines();
+        int[] targetLines = {1, 10, 20};
 
         for (int lineNum : targetLines) {
             if (lineNum < totalLines && lineNum > 0) { // Ensure valid line index
