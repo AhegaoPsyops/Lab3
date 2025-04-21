@@ -29,11 +29,13 @@ class chartPanel extends JPanel {
         // because i wasnt able to implement J Graphics, this was handmade, and cant really be turned into another class
         if (data.isEmpty()) return;
         Map<String, Integer> eventCountByYear = new HashMap<>(); // does this count as Streams?
+        // implement read every row of data and parse by how it is read
         for (String[] row : data) {
             String year = row[1].split("\\.")[0];
             eventCountByYear.put(year, eventCountByYear.getOrDefault(year, 0) + 1);
         }
 
+        // set chart sizes
         int width = getWidth();
         int height = getHeight();
         int margin = 40;

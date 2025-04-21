@@ -25,9 +25,10 @@ public class guiMain {
         }
         System.out.println("\nReading " + dataFile);
 
+        // create the dataVisualizer object
         dataVisualizer dataVisualizer = new dataVisualizer(dataFile);
         dataVisualizer.setVisible(true);
 
-       // SwingUtilities.invokeLater(() -> new dataVisualizer(dataFile).setVisible(true));
+
     }
 }

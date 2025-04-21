@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.util.List;
 import java.awt.*;
-import java.util.*;
 
 /*
 Implement a Builder Design Pattern.
@@ -12,6 +11,7 @@ visual object completion.
 
 public class visualObjects extends JPanel {
     public visualObjects(List<String[]> fileData) {
+        // create panel objects for display
         tablePanel tablePanel = new tablePanel(fileData);
         statistics statsPanel = new statistics(fileData);
         chartPanel chartPanel = new chartPanel(fileData);
